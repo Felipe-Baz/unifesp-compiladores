@@ -5,7 +5,8 @@
 #include <ctype.h>  // Incluir a biblioteca ctype.h para usar a função toupper
 #include "funcs.h"
 
-#define VOGAIS "aeiou"
+#define VOGAIS_LOWER "aeiou"
+#define VOGAIS_UPPER "AEIOU"
 
 char *allocate_buffer(int size) {
     char *buffer = (char *) malloc (size + 1);
@@ -38,7 +39,9 @@ void replace_print(const char *content, int tamanhoBuffer, FILE *arquivo) {
 void upper_vowel(char *buffer) {
   size_t length = strlen(buffer);
   for (size_t i = 0; i < length; i++) { // Percorre os caracteres no buffer
-    if (strchr(VOGAIS, buffer[i]) != NULL) {  // Verifica se o caractere é uma vogal
+    if (strchr(VOGAIS_LOWER, buffer[i]) != NULL) {  // Verifica se o caractere é uma vogal
+      buffer[i] = toupper(buffer[i]);  // Converte para maiúscula
+    } else if (strchr(VOGAIS_UPPER, buffer[i]) != NULL) {  // Verifica se o caractere é uma vogal
       buffer[i] = toupper(buffer[i]);  // Converte para maiúscula
     }
   }
