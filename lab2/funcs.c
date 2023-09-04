@@ -46,6 +46,13 @@ void get_next_buffer_block(FILE *arquivo, buffer_type *buffer) {
   printf("**************** Loading finished ****************\n");
 }
 
+void back_char_in_buffer(buffer_type *buffer) {
+  if (buffer->last_char_pos != 0)
+  {
+    buffer->last_char_pos--;
+  }
+}
+
 char get_next_char(FILE *arquivo, buffer_type *buffer) {
   int aux = buffer->last_char_pos;
   char current_char = buffer->buffer_value[aux + 1];

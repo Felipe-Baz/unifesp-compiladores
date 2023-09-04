@@ -11,6 +11,8 @@ typedef struct BUFFER {
 
 buffer_type *allocate_buffer();
 void deallocate_buffer(buffer_type *buffer);
+void back_char_in_buffer(buffer_type *buffer);
+char get_next_char(FILE *arquivo, buffer_type *buffer);
 void analyze_file(FILE *arquivo);
 
 #endif
