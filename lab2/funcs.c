@@ -6,7 +6,7 @@
 buffer_type *allocate_buffer() {
     buffer_type *new_buffer = (buffer_type *)malloc(sizeof(buffer_type));
     if (new_buffer == NULL) {
-        // fprintf(stderr, "Erro: Falha na alocação de memória para o buffer.\n");
+        fprintf(stderr, "Erro: Falha na alocação de memória para o buffer.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -79,7 +79,6 @@ void analyze_file(FILE *arquivo) {
     c = get_next_char(arquivo, buffer);
     printf("get_next_char response:\'%c\' line: %d position: %d \n", c, buffer->line, buffer->last_char_pos);
   }
-  
   
   deallocate_buffer(buffer); // Desaloca a memoria do buffer
 }

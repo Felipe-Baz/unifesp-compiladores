@@ -1,0 +1,2 @@
+temperatura=2
+aux=2
