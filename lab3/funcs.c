@@ -187,6 +187,10 @@ void analyze_file(FILE *arquivo) {
           token[aux] = c;
           dfa_state = 1;
           aux++;
+        } else if (is_number(c)) {
+          token[aux] = c;
+          dfa_state = 2;
+          aux++;
         } else {
           dfa_state = 0;
           aux=0;
@@ -207,6 +211,19 @@ void analyze_file(FILE *arquivo) {
           back_char_in_buffer(buffer);
         }
         break;
+      case 2:
+        if (is_number(c)) {
+          token[aux] = c;
+          aux++;
+        } else {
+          token[aux] = '\0';
+          printf("\'%s\' add on list\n", token);
+          insere_no_fim(token_list, token, "number");
+          memset(token, 0, TOKEN_NAME_SIZE);
+          aux=0;
+          dfa_state = 0;
+          back_char_in_buffer(buffer);
+        }
       default:
         break;
     }
